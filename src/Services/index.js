@@ -1,0 +1,1 @@
+export {FetchAPI} from './Quiz_Service.tsx'
