@@ -10,7 +10,7 @@ import {QuestionCards} from './Components/index'
 function App() {
 
 let[quiz,setQuiz]=useState<QuizType[]>([])
-
+let[score,setScore]=useState(0)
 useEffect(() =>{
   //(fetchAPI) it will retrun promise that  why we are using async await
   async function getQuiz(){
@@ -28,6 +28,7 @@ if(!quiz.length){
   return (
     <div className="App">
       <QuestionCards 
+      //[0] This array 0 will start from 0 question and array of 0 questions
       question={quiz[0].question}
       options={quiz[0].option}
       />

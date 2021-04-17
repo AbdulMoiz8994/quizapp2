@@ -3,6 +3,7 @@ import {Props} from '../Types/types'
 
 
 const QuestionCards:React.FC<Props> = ({question,options}) => {
+    console.log(question,options);
     
     return (
   <div>
