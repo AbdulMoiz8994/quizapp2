@@ -12,8 +12,13 @@ export type QuestionObjTYPE={
 
 //copy of those things which will render in the in web page
 
-// export type QuizType{
-//     question: string
-//     answer: string
-//     option: string[]
-// }
+export type QuizType ={
+    question: string
+    answer: string
+    option: string[]
+}
+
+export type Props={
+    question: string,
+    options: string[]
+}

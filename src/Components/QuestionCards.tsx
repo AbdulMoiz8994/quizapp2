@@ -1,13 +1,20 @@
 import React from 'react'
-import {QuestionObjTYPE} from '../Types/types'
+import {Props} from '../Types/types'
 
 
-const QuestionCards = (quiz: QuestionObjTYPE) => {
-    console.log(quiz);
+const QuestionCards:React.FC<Props> = ({question,options}) => {
     
     return (
   <div>
-      <h1>Hello World</h1>
+      <h1>{question}</h1>
+       {options.map((optArray:string) =>{
+         return(
+           <ul key={optArray} style={{listStyle: 'none',cursor:'pointer',boxSizing: 'border-box'}}>
+             <li>{optArray}</li>
+           </ul>
+         )
+       })}
+       <button>Next Question</button>
   </div>
     )
 }

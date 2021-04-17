@@ -1,4 +1,4 @@
-import {QuestionObjTYPE} from '../Types/types'
+import {QuestionObjTYPE,QuizType} from '../Types/types'
 
 
 const suffleArray=(array: any[])=>{
@@ -6,11 +6,11 @@ const suffleArray=(array: any[])=>{
 }
 
 //we are sending (totalQuestions and  level) in arrow via arguments
-export const FetchAPI= async(totalQuestions: number,level:string): Promise<QuestionObjTYPE[]>=>{
+export const FetchAPI= async(totalQuestions: number,level:string): Promise<QuizType[]>=>{
     const fetchData=fetch(`https://opentdb.com/api.php?amount=${totalQuestions}&difficulty=${level}&type=multiple`)
     let {results}=await(await fetchData).json();
     console.log(results); 
-    const quiz: QuestionObjTYPE[]=results.map((questionObj: QuestionObjTYPE) =>{
+    const quiz: QuizType[]=results.map((questionObj: QuestionObjTYPE) =>{
         return{
             question: questionObj.question,
             answer: questionObj.correct_answer,

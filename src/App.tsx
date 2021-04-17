@@ -4,25 +4,33 @@ import './App.css';
 // import api comp
 import {FetchAPI} from './Services/index'
 //import types
-import {QuestionObjTYPE} from './Types/types'
+import {QuizType} from './Types/types'
 import {QuestionCards} from './Components/index'
 
 function App() {
 
-let[quiz,setQuiz]=useState<QuestionObjTYPE[]>([])
+let[quiz,setQuiz]=useState<QuizType[]>([])
 
 useEffect(() =>{
   //(fetchAPI) it will retrun promise that  why we are using async await
   async function getQuiz(){
-   const questions:QuestionObjTYPE[]= await FetchAPI(10,"easy") 
+   const questions:QuizType[]= await FetchAPI(10,"easy") 
    console.log(questions);
    setQuiz(questions)
   }
    getQuiz();
 },[])
+//laoding state  becauase we are calling api it takes some time
+if(!quiz.length){
+  return <h3> Loading...</h3>
+}
+
   return (
     <div className="App">
-      <QuestionCards quiz={quiz}/>
+      <QuestionCards 
+      question={quiz[0].question}
+      options={quiz[0].option}
+      />
     </div>
   );
 }
