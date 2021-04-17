@@ -14,7 +14,8 @@ export const FetchAPI= async(totalQuestions: number,level:string): Promise<QuizT
         return{
             question: questionObj.question,
             answer: questionObj.correct_answer,
-            option: suffleArray(questionObj.incorrect_answers.concat(questionObj.correct_answer))
+            correct_answer: questionObj.correct_answer,
+            option: suffleArray(questionObj.incorrect_answers.concat(questionObj.correct_answer)),
             //This concat help us to marge the options of array (incorrect_answers) and (correct_answer) 
         } 
 

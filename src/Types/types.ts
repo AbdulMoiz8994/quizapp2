@@ -1,5 +1,7 @@
 // import { type } from "node:os"
 
+import React from "react"
+
 //This is orginal type of api 
 export type QuestionObjTYPE={
     category: string
@@ -16,9 +18,13 @@ export type QuizType ={
     question: string
     answer: string
     option: string[]
+    correct_answer: string
+
 }
 
 export type Props={
     question: string,
     options: string[]
+    callback: (e:React.FormEvent<EventTarget>,useAns: string)=> void
+    
 }
