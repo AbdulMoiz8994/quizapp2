@@ -1,16 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState,useRef } from 'react'
 import {Props} from '../Types/types'
 
 
 const QuestionCards:React.FC<Props> = ({question,options,callback}) => {
-    console.log(question,options);
+    // console.log(question,options);
     
     let[selectAns,setselectAns]=useState("")
-    const onChnageFUnc=(e:any)=>{
-      
-          setselectAns(e.target.value)
-          console.log(selectAns);
+let values=useRef(null);
 
+    const onChnageFUnc=(e:any)=>{
+           const name= values.current
+          //  console.log(name);
+           setselectAns(e.target.value)
     }
     return (
   <div>
@@ -23,14 +24,14 @@ const QuestionCards:React.FC<Props> = ({question,options,callback}) => {
           //  </ul>
           <div  key={optArray}>
           <label>
-            <input type="radio" name="opt" value={optArray} onChange={onChnageFUnc}/>
+            <input type="radio" name="opt" value={optArray} ref={values} onChange={onChnageFUnc}/>
             {optArray}
           </label>
           </div>
          )
        })}
-   <input type="submit"/>
-       {/* <button>Next Question</button> */}
+   {/* <input type="submit"/> */}
+       <button type="submit">Next Question</button>
        </form>
   </div>
     )

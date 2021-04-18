@@ -10,10 +10,11 @@ import {QuestionCards} from './Components/index'
 function App() {
 
 let[quiz,setQuiz]=useState<QuizType[]>([])
-let[score,setScore]=useState(0)
-let[number,setNumber]=useState(1)
-
 let[currentState,setCurrentState]=useState(0)
+//This is for score 
+let[score,setScore]=useState(0)
+//This is for question number whihc start from 1
+let[number,setNumber]=useState(1)
 
 
 useEffect(() =>{
@@ -32,6 +33,8 @@ useEffect(() =>{
 const handleSubmit=(e: React.FormEvent<EventTarget>,useAns: string) =>{
   e.preventDefault()
   const correctAnsScore:QuizType=quiz[currentState]
+  // console.log(useAns);
+  
   if(useAns ===correctAnsScore.answer){
     setScore(++score)
   }
@@ -39,6 +42,7 @@ const handleSubmit=(e: React.FormEvent<EventTarget>,useAns: string) =>{
      setCurrentState(++currentState)
      setNumber(++number)
 }else{
+  alert(`Our Quiz score is ${score} out of ${quiz.length}`)
   setCurrentState(0)
   setNumber(0)
   setScore(0)

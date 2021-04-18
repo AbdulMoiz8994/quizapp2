@@ -9,7 +9,7 @@ const suffleArray=(array: any[])=>{
 export const FetchAPI= async(totalQuestions: number,level:string): Promise<QuizType[]>=>{
     const fetchData=fetch(`https://opentdb.com/api.php?amount=${totalQuestions}&difficulty=${level}&type=multiple`)
     let {results}=await(await fetchData).json();
-    console.log(results); 
+    // console.log(results); 
     const quiz: QuizType[]=results.map((questionObj: QuestionObjTYPE) =>{
         return{
             question: questionObj.question,
